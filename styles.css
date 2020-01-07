@@ -1,0 +1,82 @@
+html {
+    background-image: url(windows-10-fond-de-pantalla.webp);
+    background-size: cover;
+}
+
+body {
+    margin: auto;
+    margin-top: 5%;
+}
+
+#calculadora {
+    height: 409.5px;
+    width: 337px;
+    margin: auto;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#dis {
+    margin: auto;
+    width: 99.5%;
+    border: 1px black solid;
+}
+
+#dis input {
+    width: 99%;
+    line-height: 65px;
+    font-size: 3em;
+    text-align: right;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#btns {
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    width: 25%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2px;
+    text-align: center;
+    user-select: none;
+    line-height: 63px;
+    font-family: 'Public Sans', 'sans-serif';
+    font-size: 25px;
+    border: 0.7px solid;
+    padding: 5px;
+    height: 13em;
+    width: 13em;
+}
+
+.operators {
+    background: rgb(255, 255, 255, 70%);
+    opacity: 80%;
+}
+
+.operators:hover {
+    background: #a6a4a1;
+}
+
+#divide:hover, #add:hover, #rest:hover, #multi:hover, #equal:hover {
+    background: #007bff;
+}
+
+#git:hover {
+    backdrop-filter: blur(20px);
+    background-color: rgba(224, 13, 13, 0.979);
+}
+
+.numbers {
+    background: rgb(255, 255, 255, 90%);
+    font-weight: bolder;
+}
+
+.numbers:hover {
+    background: #a6a4a1;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
