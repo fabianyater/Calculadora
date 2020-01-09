@@ -1,36 +1,35 @@
 html {
-    background-image: url(windows-10-fond-de-pantalla.webp);
+    background-image: url('69223109_2559735607404919_1575345385143009280_o.jpg');
+    /*background-position: center center;
+    background-repeat: no-repeat;*/
     background-size: cover;
 }
-
 body {
     margin: auto;
     margin-top: 5%;
 }
-
-#calculadora {
-    height: 409.5px;
-    width: 337px;
-    margin: auto;
-    backdrop-filter: blur(20px);
-    background-color: rgba(255, 255, 255, 0.5);
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    #calculadora {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5);
+        height: 400px;
+        width: 270px;
+        margin: auto;
+    }
 }
-
 #dis {
     margin: auto;
     width: 99.5%;
     border: 1px black solid;
 }
-
-#dis input {
+input {
     width: 99%;
     line-height: 65px;
     font-size: 3em;
     text-align: right;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5);
+    background: transparent;
 }
-
 #btns {
     margin: auto;
     display: grid;
@@ -40,43 +39,53 @@ body {
     grid-gap: 2px;
     text-align: center;
     user-select: none;
-    line-height: 63px;
-    font-family: 'Public Sans', 'sans-serif';
-    font-size: 25px;
-    border: 0.7px solid;
+    line-height: 45px;
     padding: 5px;
-    height: 13em;
-    width: 13em;
+    height: 20em;
+    width: 10em;
 }
-
 .operators {
-    background: rgb(255, 255, 255, 70%);
-    opacity: 80%;
+    background: rgba(245, 245, 245, 0.7);
+    width: 64px;
+    height: 60px;
+    border: 1px solid white;
+    font: 1em sans-serif;
 }
-
 .operators:hover {
-    background: #a6a4a1;
+    background: rgb(178, 178, 178);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    transition-duration: 0.3s;
+    border: none;
 }
-
-#divide:hover, #add:hover, #rest:hover, #multi:hover, #equal:hover {
-    background: #007bff;
-}
-
-#git:hover {
-    backdrop-filter: blur(20px);
-    background-color: rgba(224, 13, 13, 0.979);
-}
-
 .numbers {
-    background: rgb(255, 255, 255, 90%);
-    font-weight: bolder;
+    background: rgba(255, 255, 255, 1);
+    width: 64px;
+    height: 60px;
+    border: 1px solid white; 
+    font: 1em sans-serif;
+    font-weight: bold;
 }
-
 .numbers:hover {
-    background: #a6a4a1;
+    background: rgb(178, 178, 178);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    transition-duration: 0.3s;
+    border: none;
 }
-
+.numbers:focus {
+    outline-style: none;
+    box-shadow: 0px 0px 0px 2px darkgray;
+}
 img {
     width: 20px;
     height: 20px;
+}
+#equal {
+    background: #1d8794
+}
+#equal:hover {
+    background: #00d5f1;
+}
+#git:hover {
+    background-color: rgba(224, 13, 13, 0.979);
+    transition-duration: 0.3;
 }
