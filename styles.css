@@ -4,10 +4,17 @@ html {
     background-repeat: no-repeat;*/
     background-size: cover;
 }
+
 body {
     margin: auto;
     margin-top: 5%;
 }
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     #calculadora {
         -webkit-backdrop-filter: blur(10px);
@@ -18,11 +25,13 @@ body {
         margin: auto;
     }
 }
+
 #dis {
     margin: auto;
     width: 99.5%;
     border: 1px black solid;
 }
+
 input {
     width: 99%;
     line-height: 65px;
@@ -30,6 +39,7 @@ input {
     text-align: right;
     background: transparent;
 }
+
 #btns {
     margin: auto;
     display: grid;
@@ -44,47 +54,48 @@ input {
     height: 20em;
     width: 10em;
 }
-.operators {
+
+button {
     background: rgba(245, 245, 245, 0.7);
     width: 64px;
     height: 60px;
     border: 1px solid white;
     font: 1em sans-serif;
 }
-.operators:hover {
+
+button:hover {
     background: rgb(178, 178, 178);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     transition-duration: 0.3s;
     border: none;
 }
+
+button:focus {
+    outline-style: none;
+    box-shadow: 0px 0px 0px 2px red;
+}
+
+button:active {
+    transform: scale(1.2);
+}
+
 .numbers {
     background: rgba(255, 255, 255, 1);
-    width: 64px;
-    height: 60px;
-    border: 1px solid white; 
-    font: 1em sans-serif;
     font-weight: bold;
 }
-.numbers:hover {
-    background: rgb(178, 178, 178);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-    transition-duration: 0.3s;
-    border: none;
-}
-.numbers:focus {
-    outline-style: none;
-    box-shadow: 0px 0px 0px 2px darkgray;
-}
-img {
-    width: 20px;
-    height: 20px;
-}
+
 #equal {
     background: #1d8794
 }
+
 #equal:hover {
     background: #00d5f1;
 }
+
+#equal:focus{
+    background: #00d5f1;
+}
+
 #git:hover {
     background-color: rgba(224, 13, 13, 0.979);
     transition-duration: 0.3;
