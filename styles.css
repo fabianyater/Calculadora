@@ -16,13 +16,10 @@ img {
 }
 
 #odin {
-    width: 10%;
-    height: 50px;
     text-align: center;
     color: #cc9543;
 }
-
-#odin img {
+#odin img{
     width: 40px;
     height: 40px;
 }
