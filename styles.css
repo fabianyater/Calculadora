@@ -28,16 +28,10 @@ img {
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         background-color: rgba(255, 255, 255, 0.5);
-        height: 400px;
+        height: 389px;
         width: 270px;
         margin: auto;
     }
-}
-
-#dis {
-    margin: auto;
-    width: 99.5%;
-    border: 1px black solid;
 }
 
 input {
@@ -49,18 +43,12 @@ input {
 }
 
 #btns {
-    margin: auto;
     display: grid;
     justify-content: center;
-    width: 25%;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2px;
-    text-align: center;
-    user-select: none;
-    line-height: 45px;
     padding: 5px;
-    height: 20em;
-    width: 10em;
+    height: 19em;
 }
 
 button {
