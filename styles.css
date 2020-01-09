@@ -1,7 +1,7 @@
 html {
     background-image: url('69223109_2559735607404919_1575345385143009280_o.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
+    /*background-position: center center;*/
+    background-repeat: repeat-y;
     background-size: cover;
 }
 
@@ -13,6 +13,12 @@ body {
 img {
     width: 20px;
     height: 20px;
+}
+
+#odin {
+    width: 50px;
+    height: 50px;
+    float: right;
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
@@ -92,7 +98,7 @@ button:active {
     background: #00d5f1;
 }
 
-#equal:focus{
+#equal:focus {
     background: #00d5f1;
 }
 
