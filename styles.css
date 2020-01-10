@@ -15,11 +15,17 @@ img {
     height: 20px;
 }
 
+a{
+    text-decoration: none;
+    color: #cc9543;
+}
+
 #odin {
     text-align: center;
     color: #cc9543;
 }
-#odin img{
+
+#odin img {
     width: 40px;
     height: 40px;
 }
@@ -29,17 +35,26 @@ img {
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         background-color: rgba(255, 255, 255, 0.5);
-        height: 389px;
+        height: 395px;
         width: 270px;
         margin: auto;
     }
 }
 
-input {
-    width: 99%;
-    line-height: 65px;
-    font-size: 3em;
+#display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-shrink: 1;
+    height: 60px;
+    font-weight: 200;
+    background-color: transparent;
+}
+
+#entry {
+    width: 100%;
     text-align: right;
+    font: 3em sans-serif;
     background: transparent;
 }
 
@@ -69,7 +84,7 @@ button:hover {
 
 button:focus {
     outline-style: none;
-    box-shadow: 0px 0px 0px 2px red;
+    box-shadow: 0px 0px 0px 2px rgb(198, 139, 183);
 }
 
 button:active {
@@ -82,18 +97,24 @@ button:active {
 }
 
 #equal {
-    background: #1d8794
+    background: #fecfb4;
 }
 
 #equal:hover {
-    background: #00d5f1;
+    background: #fbadb8;
 }
 
 #equal:focus {
-    background: #00d5f1;
+    background: #c688b9;
 }
 
 #git:hover {
     background-color: rgba(224, 13, 13, 0.979);
-    transition-duration: 0.3;
+    transition-duration: 0.2;
+}
+
+#creator{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    text-align: center;
 }
