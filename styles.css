@@ -53,6 +53,10 @@ a{
 
 #entry {
     width: 100%;
+input {
+    width: 79%;
+    line-height: 65px;
+    font-size: 3em;
     text-align: right;
     font: 3em sans-serif;
     background: transparent;
@@ -117,4 +121,6 @@ button:active {
     grid-column-start: 1;
     grid-column-end: 5;
     text-align: center;
+}
+    transition-duration: 0.3;
 }
