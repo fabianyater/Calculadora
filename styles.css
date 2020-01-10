@@ -15,7 +15,7 @@ img {
     height: 20px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #cc9543;
 }
@@ -41,7 +41,7 @@ a{
     }
 }
 
-#display{
+#display {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -53,8 +53,10 @@ a{
 
 #entry {
     width: 100%;
-input {
-    width: 79%;
+}
+
+#display {
+    width: 99%;
     line-height: 65px;
     font-size: 3em;
     text-align: right;
@@ -117,10 +119,11 @@ button:active {
     transition-duration: 0.2;
 }
 
-#creator{
+#creator {
     grid-column-start: 1;
     grid-column-end: 5;
     text-align: center;
 }
-    transition-duration: 0.3;
+
+transition-duration: 0.3;
 }
