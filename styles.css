@@ -30,15 +30,12 @@ a {
     height: 40px;
 }
 
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    #calculadora {
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.5);
-        height: 395px;
-        width: 270px;
-        margin: auto;
-    }
+#calculadora {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 395px;
+    width: 270px;
+    margin: auto;
 }
 
 #display {
@@ -134,15 +131,15 @@ button:active {
 .div-imagen div {
     position: absolute;
     z-index: -1;
-    margin-left: 35%;
+    margin-left: 100px;
     color: #cc9543;
 }
 
-.div-imagen img{
+.div-imagen img {
     width: 100%;
-} 
+}
 
 .imgC:hover {
-    opacity: 0.07;
+    opacity: 0;
     transition: opacity 500ms;
 }
