@@ -123,7 +123,26 @@ button:active {
     grid-column-start: 1;
     grid-column-end: 5;
     text-align: center;
+    transition-duration: 0.3;
 }
 
-transition-duration: 0.3;
+.div-imagen {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.div-imagen div {
+    position: absolute;
+    z-index: -1;
+    margin-left: 35%;
+    color: #cc9543;
+}
+
+.div-imagen img{
+    width: 100%;
+} 
+
+.imgC:hover {
+    opacity: 0.07;
+    transition: opacity 500ms;
 }
