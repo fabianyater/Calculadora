@@ -46,21 +46,15 @@ a {
     height: 60px;
     font-weight: 200;
     background-color: transparent;
-}
-
-#entry {
-    width: 100%;
-    margin-left: 5px;
-    margin-right: 2px;
-    border: 1px solid rgba(251, 173, 184, 0.5);
+    border-bottom: 5px #e3b261 solid;
 }
 
 #display {
-    width: 99%;
-    text-align: right;
-    font: 2em sans-serif;
-    background: transparent;
-    line-height: 50px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    font-size: 2em;
 }
 
 #btns {

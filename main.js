@@ -1,76 +1,73 @@
-function add(a, b) {
-    return Number(a) + Number(b);
-}
+const view = document.getElementById('display');
+const buttons = document.querySelectorAll('.numbers');
+const clearButton = document.querySelector('#clear');
+const eraseButton = document.querySelector('#erase');
+let number = '';
+let del = '';
+let decimal = false;
+let newVal = '';
+let resultVal = '';
+view.innerHTML = '0';
 
-function subtract(a, b) {
-    return Number(a) - Number(b);
-}
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        number = e.target.id;
+        if (resultVal) {
+            newVal = number;
+            console.log(newVal);
+            resultVal = "";
+        } else if (number == ".") {
+            if (decimal != true) {
+                newVal += number;
+                decimal = true;
+            }
+        } else {
+            newVal += number;
+        }
+        newVal.length >= 10 ? newVal = newVal.slice(0, 10) : view.innerHTML = newVal;
+    })
+});
 
-function multiply(a, b) {
-    return Number(a) * Number(b);
-}
+clearButton.addEventListener('click', (e) => {
+    view.innerHTML = '0';
+    newVal = '';
+});
 
+eraseButton.addEventListener('click', (e) => {
+    if (newVal.length > 0) newVal = newVal.slice(0, -1);
+    newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
+})
+
+function add(a, b) { return a + b }
+function substract(a, b) { return a - b }
+function multiply(a, b) { return a * b }
 function divide(a, b) {
     if (b == 0) {
-        return 'ERROR'
-    } else {
-        return Number(a) / Number(b);
+        return view.innerHTML = "Error";
+        console.log("errooooor");
     }
+    return a / b;
+}
+function factorial(a) {
+    if (a < 2) {
+        return 1;
+    }
+    return a * factorial(a - 1);
 }
 
 function operate(operator, a, b) {
     switch (operator) {
-        case '+':
+        case "+":
             return add(a, b);
-        case '-':
-            return subtract(a, b);
-        case "*":
+        case "—":
+            return substract(a, b);
+        case "X":
             return multiply(a, b);
         case "/":
             return divide(a, b);
+        case "!":
+            return factorial(a);
         default:
-            return "ERROR - INVALID OPERATOR";
+            view.innerHTML = "INVALID INPUT";
     }
 }
-
-
-const view = document.getElementById("entry");
-const clearbutton = document.getElementById("clear");
-const buttons = document.querySelectorAll('.numbers');
-const op = document.querySelectorAll('.operators');
-
-view.innerHTML = "0";
-
-let accumulator = 0;
-let currentValue = null;
-let operation = null;
-let dec = null;
-
-function display(number) {
-    if (number.length >= 9) {
-        number = number.slice(0, 9);
-    }
-    view.innerHTML = number;
-}
-
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        currentValue ? currentValue = currentValue + button.id : currentValue = button.id;
-        display(currentValue);
-    });
-});
-
-op.forEach(button => {
-    button.addEventListener("click", e => {
-        operation ? operation = operation + button.id : operation = button.id;
-        display(operation);
-    })
-});
-
-
-clearbutton.addEventListener("click", e => {
-    accumulator = 0;
-    currentValue = null;
-    operate = null;
-    display(accumulator);
-});
