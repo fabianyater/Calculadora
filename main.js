@@ -2,20 +2,20 @@ const view = document.getElementById('display');
 const buttons = document.querySelectorAll('.numbers');
 const clearButton = document.querySelector('#clear');
 const eraseButton = document.querySelector('#erase');
+const result = document.querySelector('#equal');
+const operations = document.querySelectorAll('.operators');
 let number = '';
+let numbers = '';
 let del = '';
 let decimal = false;
 let newVal = '';
 let resultVal = '';
-view.innerHTML = '0';
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         number = e.target.id;
         if (resultVal) {
             newVal = number;
-            console.log(newVal);
-            resultVal = "";
         } else if (number == ".") {
             if (decimal != true) {
                 newVal += number;
@@ -31,12 +31,21 @@ buttons.forEach((button) => {
 clearButton.addEventListener('click', (e) => {
     view.innerHTML = '0';
     newVal = '';
+    decimal = false;
 });
 
 eraseButton.addEventListener('click', (e) => {
     if (newVal.length > 0) newVal = newVal.slice(0, -1);
     newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
+    decimal = false;
 })
+
+operations.forEach(button => {
+    button.addEventListener('click', (e) => {
+        view.innerHTML = number + e.target.textContent;
+
+    });
+});
 
 function add(a, b) { return a + b }
 function substract(a, b) { return a - b }
@@ -55,18 +64,18 @@ function factorial(a) {
     return a * factorial(a - 1);
 }
 
-function operate(operator, a, b) {
+function operate(a, operator, b) {
     switch (operator) {
         case "+":
-            return add(a, b);
+            return view.innerHTML = add(a, b);
         case "—":
-            return substract(a, b);
+            return view.innerHTML = substract(a, b);
         case "X":
-            return multiply(a, b);
+            return view.innerHTML = multiply(a, b);
         case "/":
-            return divide(a, b);
+            return view.innerHTML = divide(a, b);
         case "!":
-            return factorial(a);
+            return view.innerHTML = factorial(a);
         default:
             view.innerHTML = "INVALID INPUT";
     }
