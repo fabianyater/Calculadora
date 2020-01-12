@@ -1,6 +1,6 @@
 html {
     background-image: url('69223109_2559735607404919_1575345385143009280_o.jpg');
-    /*background-position: center center;*/
+    background-position: center center;
     background-repeat: repeat-y;
     background-size: cover;
 }
@@ -33,28 +33,28 @@ a {
 #calculadora {
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.5);
-    height: 395px;
+    height: 420px;
     width: 270px;
     margin: auto;
+    border: 1px solid #cc9543;
 }
 
-#display {
+#display, #displayResult {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    flex-shrink: 1;
-    height: 60px;
-    font-weight: 200;
-    background-color: transparent;
+    height: 50px;
     border-bottom: 5px #e3b261 solid;
+    width: 100%;
+    padding-right: 10px;
+    box-sizing: border-box;
 }
 
-#display {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+#displayResult{
+    font: 1em sans-serif;
+    height: 30px;
     align-items: center;
-    font-size: 2em;
+    border: none;
 }
 
 #btns {
@@ -67,7 +67,7 @@ a {
 }
 
 button {
-    background: #f5f5f5b3;
+    background: #dfe1e5;
     width: 64px;
     height: 60px;
     border: 1px solid white;
@@ -75,15 +75,16 @@ button {
 }
 
 button:hover {
-    background: rgb(178, 178, 178);
+    background: #e3b261;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
     transition-duration: 0.3s;
     border: none;
+    color: white;
 }
 
 button:focus {
     outline-style: none;
-    box-shadow: 0px 0px 0px 2px rgb(198, 139, 183);
+    box-shadow: 0px 0px 0px 2px #e3b261;
 }
 
 button:active {
@@ -91,7 +92,7 @@ button:active {
 }
 
 .numbers {
-    background: rgba(255, 255, 255, 1);
+    background: #f1f3f4;
     font-weight: bold;
 }
 
@@ -100,11 +101,11 @@ button:active {
 }
 
 #equal:hover {
-    background: #fbadb8;
+    background: #e3b261;
 }
 
 #equal:focus {
-    background: #c688b9;
+    background: #e3b261;
 }
 
 #git:hover {
