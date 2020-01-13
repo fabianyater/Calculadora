@@ -59,6 +59,7 @@ function calculate() {
     secondNumber = +view.textContent;
 (view.textContent.length > 10)? view.style.fontSize = "1.2em": view.style.fontSize = "2em";
     view.innerHTML = operate(operator, firstNumber, secondNumber);
+    view.textContent += firstNumber + ' ' + secondNumber + ' =';
     firstNumber = null;
     secondNumber = null;
 }
