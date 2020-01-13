@@ -33,9 +33,10 @@ a {
 #calculadora {
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.5);
-    height: 420px;
+    height: 470px;
     width: 270px;
     margin: auto;
+    border-radius: 7%/4%;
     border: 1px solid #cc9543;
 }
 
@@ -50,11 +51,12 @@ a {
     box-sizing: border-box;
 }
 
-#displayResult{
+#displayResult {
     font: 1em sans-serif;
-    height: 30px;
+    height: 80px;
     align-items: center;
     border: none;
+    font-weight: bolder;
 }
 
 #btns {
@@ -72,6 +74,7 @@ button {
     height: 60px;
     border: 1px solid white;
     font: 1em sans-serif;
+    border-radius: 5px;
 }
 
 button:hover {
@@ -97,10 +100,6 @@ button:active {
 }
 
 #equal {
-    background: #fecfb4;
-}
-
-#equal:hover {
     background: #e3b261;
 }
 
@@ -128,19 +127,21 @@ button:active {
 .div-imagen div {
     position: absolute;
     z-index: -1;
-    margin-left: 100px;
-    color: #cc9543;
+    margin-left: 53px;
+    color: white;
+    margin-top: 4px;
 }
 
 .div-imagen img {
     width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .imgC:hover {
     opacity: 0;
     transition: opacity 500ms;
 }
-
 
 #theme {
     margin: 15px auto;
@@ -153,22 +154,18 @@ button:active {
     font: 1em sans-serif;
     user-select: none;
     text-align-last: center;
-    }
-
-
-
-@media screen and (max-width: 480px) {
-  #theme {
-    width: calc(100% - 80px);
-  }
 }
 
-#theme:hover{
+@media screen and (max-width: 480px) {
+    #theme {
+        width: calc(100% - 80px);
+    }
+}
+
+#theme:hover {
     background: #fecfb4;
     color: black;
     cursor: pointer;
     opacity: 0.5;
     transition-duration: 0.3;
-    
 }
-

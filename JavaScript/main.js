@@ -57,8 +57,8 @@ operations.forEach(button => {
 
 function calculate() {
     secondNumber = +view.textContent;
-    view.textContent = operate(operator, firstNumber, secondNumber);
-    viewUp.textContent = ""
+    view.innerHTML = operate(operator, firstNumber, secondNumber);
+    viewUp.textContent = "";
     firstNumber = null;
     secondNumber = null;
 }
