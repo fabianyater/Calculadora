@@ -33,7 +33,7 @@ buttons.forEach((button) => {
         } else {
             newVal += numberSelected;
         }
-        newVal.length >= 13 ? newVal = newVal.slice(0, 13) : view.innerHTML = newVal;
+        newVal.length >= 12 ? newVal = newVal.slice(0, 12) : view.innerHTML = newVal;
     })
 });
 
