@@ -57,13 +57,8 @@ operations.forEach(button => {
 
 function calculate() {
     secondNumber = +view.textContent;
-if(newVal.length > 15){
-    view.style.fontSize = "1.2em";
-}else{
-view.style.fontSize = "2.5em";
-}
+(view.textContent.length > 10)? view.style.fontSize = "1.2em": view.style.fontSize = "2em";
     view.innerHTML = operate(operator, firstNumber, secondNumber);
-    viewUp.textContent = "";
     firstNumber = null;
     secondNumber = null;
 }
