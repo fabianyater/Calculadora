@@ -57,7 +57,7 @@ operations.forEach(button => {
 
 function calculate() {
     secondNumber = +view.textContent;
-if(view.textContent.length >15){
+if(newVal.length > 15){
     view.style.fontSize = "1.2em";
 }else{
 view.style.fontSize = "2.5em";
