@@ -15,71 +15,7 @@ let decimal = false;
 let newVal = '';
 let newOp = '';
 
-view.innerHTML = "0";
-eraseButton.addEventListener('click', backspace);
-clearButton.addEventListener('click', clearAll);
-result.addEventListener('click', calculate);
 
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        numberSelected = e.target.textContent;
-        if (view.textContent == '0') {
-            newVal = numberSelected;
-        } else if (numberSelected == "." && view.textContent.includes(".")) {
-            /*if (decimal != true) {
-                newVal += numberSelected;
-                decimal = true;
-            }*/
-        } else {
-            newVal += numberSelected;
-        }
-        newVal.length >= 11 ? newVal = newVal.slice(0, 11) : view.innerHTML = newVal;
-    })
-});
-
-operations.forEach(button => {
-    button.addEventListener('click', (e) => {
-        operatorSelected = e.target.textContent;
-        if (firstNumber) {
-            secondNumber = +view.textContent;
-            firstNumber = operate(operator, firstNumber, secondNumber);
-            newOp = operatorSelected;
-            viewUp.textContent += secondNumber + " " + newOp + " ";
-            operator = newOp;
-        } else {
-            operator = operatorSelected;
-            firstNumber = +view.textContent;
-            viewUp.textContent += firstNumber + " " + operator + " ";
-        }
-        view.textContent = "0";
-        view.style.font = "2.7em sans-serif";
-    });
-});
-function calculate() {
-    secondNumber = +view.textContent;
-    let x = view.innerHTML = operate(operator, firstNumber, secondNumber);
-    (view.textContent.length > 10) ? view.style.font = "1.2em sans-serif" : view.style.font = "2.7em sans-serif";
-    if (view.textContent.includes('.')) {
-        view.textContent = x.toFixed(3);
-    }
-    viewUp.textContent += secondNumber + ' = ';
-    firstNumber = null;
-    secondNumber = null;
-}
-
-function clearAll() {
-    view.textContent = '0';
-    viewUp.textContent = '';
-    firstNumber = '';
-    secondNumber = '';
-    view.style.font ="2.7em sans-serif";
-}
-
-function backspace() {
-    if (newVal.length > 0) newVal = view.textContent.slice(0, -1);
-    newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
-    decimal = false;
-}
 
 function add(a, b) { return a + b }
 function substract(a, b) { return a - b }
@@ -116,4 +52,72 @@ function operate(operator, a, b) {
     }
 }
 
-clearAll();
+view.innerHTML = "0";
+eraseButton.addEventListener('click', backspace);
+clearButton.addEventListener('click', clearAll);
+result.addEventListener('click', calculate);
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        numberSelected = e.target.textContent;
+        if (view.textContent == '0') {
+            newVal = numberSelected;
+        } else if (numberSelected == "." && view.textContent.includes(".")) {
+            /*if (decimal != true) {
+                newVal += numberSelected;
+                decimal = true;
+            }*/
+        } else {
+            newVal += numberSelected;
+        }
+        newVal.length >= 11 ? newVal = newVal.slice(0, 11) : view.innerHTML = newVal;
+    })
+});
+
+operations.forEach(button => {
+    button.addEventListener('click', (e) => {
+        operatorSelected = e.target.textContent;
+        if (firstNumber) {
+            secondNumber = +view.textContent;
+            firstNumber = operate(operator, firstNumber, secondNumber);
+            newOp = operatorSelected;
+            viewUp.textContent += secondNumber + " " + newOp + " ";
+            operator = newOp;
+        } else {
+            operator = operatorSelected;
+            firstNumber = +view.textContent;
+            viewUp.textContent += firstNumber + " " + operator + " ";
+        }
+        if (operatorSelected == "!") {
+            viewUp.textContent = "fact(" + firstNumber + ")";
+        }
+        view.textContent = "0";
+        view.style.font = "2.7em sans-serif";
+    });
+});
+
+function calculate() {
+    secondNumber = +view.textContent;
+    let x = view.innerHTML = operate(operator, firstNumber, secondNumber);
+    (view.textContent.length > 10) ? view.style.font = "1.2em sans-serif" : view.style.font = "2.7em sans-serif";
+    if (view.textContent.includes('.')) {
+        view.textContent = x.toFixed(3);
+    }
+    viewUp.textContent += secondNumber + ' = ';
+    firstNumber = null;
+    secondNumber = null;
+}
+
+function clearAll() {
+    view.textContent = '0';
+    viewUp.textContent = '';
+    firstNumber = '';
+    secondNumber = '';
+    view.style.font = "2.7em sans-serif";
+}
+
+function backspace() {
+    if (newVal.length > 0) newVal = view.textContent.slice(0, -1);
+    newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
+    decimal = false;
+}

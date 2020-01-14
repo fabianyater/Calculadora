@@ -23,6 +23,9 @@ buttonTheme.addEventListener('click', (e) => {
             break;
         case 5:
             backgroundh.style.backgroundImage = 'url(imgs/backgrounds/withluke_liberty_island-min.jpg)';
+            buttonTheme.style.color = "black";
             break;
     }
+
+    if (alea != 5) { buttonTheme.style.color = "white"; }
 });
