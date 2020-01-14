@@ -33,7 +33,7 @@ a {
 #calculadora {
     backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.5);
-    height: 470px;
+    height: 480px;
     width: 270px;
     margin: auto;
     border-radius: 7%/4%;
@@ -48,7 +48,9 @@ a {
     border-bottom: 5px #e3b261 solid;
     width: 100%;
     padding-right: 10px;
+    padding-left: 10px;
     box-sizing: border-box;
+    font: 2.7em sans-serif;
 }
 
 #displayResult {
@@ -57,6 +59,18 @@ a {
     align-items: center;
     border: none;
     font-weight: bolder;
+    overflow-y: scroll;
+    margin-top: 10px;
+}
+
+#displayResult::-webkit-scrollbar {
+    width: 5px;
+}
+
+#displayResult::-webkit-scrollbar-thumb {
+    border-radius: 20%;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #D62929;
 }
 
 #btns {

@@ -52,14 +52,17 @@ operations.forEach(button => {
             viewUp.textContent += firstNumber + " " + operator + " ";
         }
         view.textContent = "0";
+        view.style.font = "2.7em sans-serif";
     });
 });
-
 function calculate() {
     secondNumber = +view.textContent;
-(view.textContent.length > 10)? view.style.fontSize = "1.2em": view.style.fontSize = "2em";
-    view.innerHTML = operate(operator, firstNumber, secondNumber);
-    viewUp.textContent += secondNumber + ' =';
+    let x = view.innerHTML = operate(operator, firstNumber, secondNumber);
+    (view.textContent.length > 10) ? view.style.font = "1.2em sans-serif" : view.style.font = "2.7em sans-serif";
+    if (view.textContent.includes('.')) {
+        view.textContent = x.toFixed(3);
+    }
+    viewUp.textContent += secondNumber + ' = ';
     firstNumber = null;
     secondNumber = null;
 }
@@ -69,6 +72,7 @@ function clearAll() {
     viewUp.textContent = '';
     firstNumber = '';
     secondNumber = '';
+    view.style.font ="2.7em sans-serif";
 }
 
 function backspace() {
