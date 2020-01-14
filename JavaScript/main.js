@@ -14,87 +14,7 @@ let operator = '';
 let decimal = false;
 let newVal = '';
 let newOp = '';
-
-
-
-function add(a, b) { return a + b }
-function substract(a, b) { return a - b }
-function multiply(a, b) { return a * b }
-function divide(a, b) {
-    if (b == 0) {
-        return view.innerHTML = "Error";
-        console.log("errooooor");
-    }
-    return a / b;
-}
-
-function factorial(a) {
-    if (a < 2) {
-        return 1;
-    }
-    return a * factorial(a - 1);
-}
-
-function operate(operator, a, b) {
-    switch (operator) {
-        case "+":
-            return add(a, b);
-        case "-":
-            return substract(a, b);
-        case "x":
-            return multiply(a, b);
-        case "/":
-            return divide(a, b);
-        case "!":
-            return factorial(a);
-        default:
-            view.innerHTML = "INVALID INPUT";
-    }
-}
-
 view.innerHTML = "0";
-eraseButton.addEventListener('click', backspace);
-clearButton.addEventListener('click', clearAll);
-result.addEventListener('click', calculate);
-
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        numberSelected = e.target.textContent;
-        if (view.textContent == '0') {
-            newVal = numberSelected;
-        } else if (numberSelected == "." && view.textContent.includes(".")) {
-            /*if (decimal != true) {
-                newVal += numberSelected;
-                decimal = true;
-            }*/
-        } else {
-            newVal += numberSelected;
-        }
-        newVal.length >= 11 ? newVal = newVal.slice(0, 11) : view.innerHTML = newVal;
-    })
-});
-
-operations.forEach(button => {
-    button.addEventListener('click', (e) => {
-        operatorSelected = e.target.textContent;
-        if (firstNumber) {
-            secondNumber = +view.textContent;
-            firstNumber = operate(operator, firstNumber, secondNumber);
-            newOp = operatorSelected;
-            viewUp.textContent += secondNumber + " " + newOp + " ";
-            operator = newOp;
-        } else {
-            operator = operatorSelected;
-            firstNumber = +view.textContent;
-            viewUp.textContent += firstNumber + " " + operator + " ";
-        }
-        if (operatorSelected == "!") {
-            viewUp.textContent = "fact(" + firstNumber + ")";
-        }
-        view.textContent = "0";
-        view.style.font = "2.7em sans-serif";
-    });
-});
 
 function calculate() {
     secondNumber = +view.textContent;
@@ -121,3 +41,81 @@ function backspace() {
     newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
     decimal = false;
 }
+
+function maxDisplayLength(str) {
+    let maxLength = 10;
+    return str.length > maxLength ? str = str.slice(-maxLength) : view.innerHTML = str;;
+}
+
+function add(a, b) { return a + b }
+
+function substract(a, b) { return a - b }
+
+function multiply(a, b) { return a * b }
+
+function divide(a, b) {
+    let res = "";
+    b == 0 ? res = view.innerHTML = "Error" : res = a / b;
+    return res;
+}
+
+function factorial(a) {
+    a < 2 ? a = 1 : a = a * factorial(a - 1);
+    return a;
+}
+
+function operate(operator, a, b) {
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return substract(a, b);
+        case "x":
+            return multiply(a, b);
+        case "/":
+            return divide(a, b);
+        case "!":
+            return factorial(a);
+        default:
+            view.innerHTML = "INVALID INPUT";
+    }
+}
+
+eraseButton.addEventListener('click', backspace);
+clearButton.addEventListener('click', clearAll);
+result.addEventListener('click', calculate);
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        numberSelected = e.target.textContent;
+        if (view.textContent == '0') {
+            newVal = numberSelected;
+        } else if (numberSelected == "." && view.textContent.includes(".")) {
+        } else {
+            newVal += numberSelected;
+        }
+        maxDisplayLength(newVal);
+    })
+});
+
+operations.forEach(button => {
+    button.addEventListener('click', (e) => {
+        operatorSelected = e.target.textContent;
+        if (firstNumber) {
+            secondNumber = +view.textContent;
+            firstNumber = operate(operator, firstNumber, secondNumber);
+            newOp = operatorSelected;
+            viewUp.textContent += secondNumber + " " + newOp + " ";
+            operator = newOp;
+        } else {
+            operator = operatorSelected;
+            firstNumber = +view.textContent;
+            viewUp.textContent += firstNumber + " " + operator + " ";
+        }
+        if (operatorSelected == "!") {
+            viewUp.textContent = "fact(" + firstNumber + ")";
+        }
+        view.textContent = "0";
+        view.style.font = "2.7em sans-serif";
+    });
+});

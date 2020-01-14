@@ -84,7 +84,7 @@ a {
 }
 
 button {
-    background: #dfe1e5;
+    background: #f7f7f7cc;
     width: 64px;
     height: 60px;
     border: 1px solid white;
@@ -110,7 +110,7 @@ button:active {
 }
 
 .numbers {
-    background: #f1f3f4;
+    background: white;
     font-weight: bold;
 }
 
@@ -171,16 +171,16 @@ button:active {
     text-align-last: center;
 }
 
-@media screen and (max-width: 480px) {
-    #theme {
-        width: calc(100% - 80px);
-    }
-}
-
 #theme:hover {
     background: #fecfb4;
     color: black;
     cursor: pointer;
     opacity: 0.5;
     transition-duration: 0.3;
+}
+
+@media screen and (max-width: 480px) {
+    #theme {
+        width: calc(100% - 80px);
+    }
 }
