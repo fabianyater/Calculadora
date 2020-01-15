@@ -1,4 +1,4 @@
-//Change background imageACAC
+//Change background image
 const buttonTheme = document.getElementById('theme');
 const backgroundh = document.querySelector('html');
 

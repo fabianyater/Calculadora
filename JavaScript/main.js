@@ -1,67 +1,99 @@
-const view = document.getElementById('display');
-const viewUp = document.getElementById('displayResult');
-const buttons = document.querySelectorAll('.numbers');
-const clearButton = document.querySelector('#clear');
-const eraseButton = document.querySelector('#erase');
-const result = document.querySelector('#equal');
-const operations = document.querySelectorAll('.operators');
+const numbers = document.querySelectorAll('.numbers');
+const clearButton = document.querySelector("#clear");
+const equalsButton = document.getElementById("equal");
+const operators = document.querySelectorAll(".operators");
+const backspaceButton = document.querySelector(".backspace");
+const view = document.getElementById("display");
+const viewUp = document.getElementById("displayResult");
 
-let numberSelected = '';
-let operatorSelected = '';
-let firstNumber = '';
-let secondNumber = '';
-let operator = '';
-let decimal = false;
-let newVal = '';
-let newOp = '';
-view.innerHTML = "0";
+let firstNumber = 0;
+let secondNumber = 0;
+let operatorSelected = "";
+let result = 0;
+let displayText = "";
+let equalsPressed = false;
+let operatorPressed = false;
 
-function calculate() {
-    secondNumber = +view.textContent;
-    let x = view.innerHTML = operate(operator, firstNumber, secondNumber);
-    (view.textContent.length > 10) ? view.style.font = "1.2em sans-serif" : view.style.font = "2.7em sans-serif";
-    if (view.textContent.includes('.')) {
-        view.textContent = x.toFixed(3);
-    }
-    viewUp.textContent += secondNumber + ' = ';
-    firstNumber = null;
-    secondNumber = null;
-}
+clearButton.addEventListener("click", allClear);
+equalsButton.addEventListener("click", equals);
+backspaceButton.addEventListener("click", backSpace);
 
-function clearAll() {
-    view.textContent = '0';
-    viewUp.textContent = '';
-    firstNumber = '';
-    secondNumber = '';
+numbers.forEach((button) => {
+    button.addEventListener('click', e => {
+        if (e.target.textContent == "." && displayText.includes('.')) {
+        } else {
+            display(e.target.textContent);
+        }
+    });
+});
+
+
+operators.forEach((button) => {
+    button.addEventListener('click', e => {
+        useOperators(button.textContent);
+        view.style.font = "2.7em sans-serif";
+    });
+});
+
+//Functions
+function allClear() {
+    view.textContent = 0;
+    viewUp.textContent = "";
+    displayText = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    result = 0;
+    operatorSelected = "";
+    equalsPressed = false;
     view.style.font = "2.7em sans-serif";
 }
 
-function backspace() {
-    if (newVal.length > 0) newVal = view.textContent.slice(0, -1);
-    newVal.length == 0 ? view.innerHTML = '0' : view.innerHTML = newVal;
-    decimal = false;
-}
+function add(a, b) { return (a + b); }
 
-function maxDisplayLength(str) {
-    let maxLength = 10;
-    return str.length > maxLength ? str = str.slice(-maxLength) : view.innerHTML = str;;
-}
+function subtract(a, b) { return a - b; }
 
-function add(a, b) { return a + b }
+function multiply(a, b) { return a * b; }
 
-function substract(a, b) { return a - b }
-
-function multiply(a, b) { return a * b }
-
-function divide(a, b) {
-    let res = "";
-    b == 0 ? res = view.innerHTML = "Error" : res = a / b;
-    return res;
-}
+function divide(a, b) { return a / b; }
 
 function factorial(a) {
     a < 2 ? a = 1 : a = a * factorial(a - 1);
     return a;
+}
+
+
+function display(buttonValue) {
+    displayText += buttonValue;
+    maxDisplayLength(displayText);
+}
+
+function selectOperator(operator) {
+    switch (operator) {
+        case "+":
+            displayText = "+";
+            operatorSelected = "+";
+            operatorPressed = true;
+            break;
+        case "-":
+            displayText = "-";
+            operatorSelected = "-";
+            break;
+        case "x":
+            displayText = "x";
+            operatorSelected = "x";
+            break;
+        case "/":
+            displayText = "/";
+            operatorSelected = "/";
+            break;
+        case "!":
+            displayText = "fact(" + firstNumber + ")";
+            operatorSelected = "!";
+            break;
+    }
+    viewUp.textContent += firstNumber + ' ' + operator;
+    view.textContent = displayText;
+    displayText = "";
 }
 
 function operate(operator, a, b) {
@@ -69,7 +101,7 @@ function operate(operator, a, b) {
         case "+":
             return add(a, b);
         case "-":
-            return substract(a, b);
+            return subtract(a, b);
         case "x":
             return multiply(a, b);
         case "/":
@@ -77,45 +109,72 @@ function operate(operator, a, b) {
         case "!":
             return factorial(a);
         default:
-            view.innerHTML = "INVALID INPUT";
+            return "INVALID OPERATOR";
     }
 }
 
-eraseButton.addEventListener('click', backspace);
-clearButton.addEventListener('click', clearAll);
-result.addEventListener('click', calculate);
+function useOperators(op) {
+    if (equalsPressed === true) {
+        selectOperator(op);
+        secondNumber = parseFloat(displayText, 10);
+    }
+    else if (secondNumber === 0) {
+        firstNumber = parseFloat(displayText, 10);
+        secondNumber = 1;
+        selectOperator(op);
+    }
+    else {
+        secondNumber = parseFloat(displayText, 10);
+        viewUp.textContent += ' ' + secondNumber  + " = ";
+        result = operate(operatorSelected, firstNumber, secondNumber);
+        displayText = "";
+        firstNumber = result;
+        selectOperator(op);
+    }
+}
 
-buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-        numberSelected = e.target.textContent;
-        if (view.textContent == '0') {
-            newVal = numberSelected;
-        } else if (numberSelected == "." && view.textContent.includes(".")) {
-        } else {
-            newVal += numberSelected;
-        }
-        maxDisplayLength(newVal);
-    })
-});
+function backSpace() {
+    if (displayText.length > 0) displayText = view.textContent.slice(0, -1);
+    displayText.length == 0 ? view.innerHTML = '0' :
+        view.innerHTML = displayText;
+}
 
-operations.forEach(button => {
-    button.addEventListener('click', (e) => {
-        operatorSelected = e.target.textContent;
-        if (firstNumber) {
-            secondNumber = +view.textContent;
-            firstNumber = operate(operator, firstNumber, secondNumber);
-            newOp = operatorSelected;
-            viewUp.textContent += secondNumber + " " + newOp + " ";
-            operator = newOp;
-        } else {
-            operator = operatorSelected;
-            firstNumber = +view.textContent;
-            viewUp.textContent += firstNumber + " " + operator + " ";
-        }
-        if (operatorSelected == "!") {
-            viewUp.textContent = "fact(" + firstNumber + ")";
-        }
-        view.textContent = "0";
+function maxDisplayLength(str) {
+    let maxLength = 10;
+    //viewUp.textContent = str;
+    return str.length > maxLength ? str = str.slice(-maxLength) :
+        view.textContent = str;;
+}
+
+function equals() {
+    if (operatorSelected === "") { return; }
+
+    if (equalsPressed === false && secondNumber === 0) { return; }
+
+    secondNumber = parseFloat(displayText, 10);
+    result = view.textContent = operate(operatorSelected, firstNumber, secondNumber);
+
+    if (operatorSelected === "divide" && secondNumber === 0) {
+        allClear();
+        viewUp.textContent = 'Error! Div by 0';
+        return;
+    }
+    (view.textContent.length > 10) ? view.style.font = "1.2em sans-serif" :
         view.style.font = "2.7em sans-serif";
-    });
-});
+
+    if (view.textContent.includes('.')) {
+        view.textContent = result.toFixed(3);
+        if (view.textContent.includes('0')) {
+            view.textContent = result;
+        }
+    }
+    
+    viewUp.textContent += ' ' + secondNumber + ' = ' ;
+
+    console.log(result);
+    firstNumber = result;
+    operatorSelected = "";
+    secondNumber = "0";
+    equalsPressed = true;
+}
+
